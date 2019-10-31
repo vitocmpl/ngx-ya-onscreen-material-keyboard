@@ -19,7 +19,7 @@
       "dom"
     ],
     "paths": {
-      "@ngx-material-keyboard/core": [
+      "angular-onscreen-material-keyboard": [
         "./src/core/src/public_api.ts"
       ]
     },
@@ -27,7 +27,7 @@
   },
   "angularCompilerOptions": {
     "paths": {
-      "@ngx-material-keyboard/core": [
+      "angular-onscreen-material-keyboard": [
         "./src/core/src/public_api.ts"
       ]
     }

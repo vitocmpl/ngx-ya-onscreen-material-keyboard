@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/ngx-material-keyboard/core.svg?branch=master)](https://travis-ci.org/ngx-material-keyboard/core)
-
-# angular-material-keyboard
+# angular-onscreen-material-keyboard
 Onscreen virtual keyboard for [Angular] using [Angular Material].
 > Note that this is a fork of https://github.com/joskwanten/core, which appears to no longer be maintained
 
@@ -14,7 +12,7 @@ Generated documentation can be found [here][docs].
 
 ## Getting started
 1. Install with your prefered packet manager (we're using `npm` here):
-`npm install --save @ngx-material-keyboard/core`
+`npm install --save angular-onscreen-material-keyboard`
 > Be sure to fulfill the peer dependencies of this module, in particular [Angular] and [Angular Material].
 
 2. Add the module to your project, e.g. `app.module.ts`:
@@ -25,7 +23,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 ...
-import { MatKeyboardModule } from '@ngx-material-keyboard/core';
+import { MatKeyboardModule } from 'angular-onscreen-material-keyboard';
 
 @NgModule({
   imports: [
@@ -61,7 +59,7 @@ All layouts are based on (or directly inherited from) the [angular-virtual-keybo
 
 But basicly you just provide the configuration of your new layout in your `AppModule`:
 ```:typescript
-import { IKeyboardLayouts, keyboardLayouts, MAT_KEYBOARD_LAYOUTS, MatKeyboardModule } from '@ngx-material-keyboard/core';
+import { IKeyboardLayouts, keyboardLayouts, MAT_KEYBOARD_LAYOUTS, MatKeyboardModule } from 'angular-onscreen-material-keyboard';
 
 const customLayouts: IKeyboardLayouts = {
   ...keyboardLayouts,
