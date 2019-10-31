@@ -1,18 +1,18 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
-  "name": "@ngx-material-keyboard/core",
-  "version": "0.1.1",
-  "description": "Onscreen virtual keyboard for Angular ≥ 5 (https://angular.io/) using Material 5 (https://material.angular.io/).",
+  "name": "angular-onscreen-material-keyboard",
+  "version": "0.1.3",
+  "description": "This package is forked from ngx-material-keyboard with bug fixes",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngx-material-keyboard/core.git"
+    "url": "git+https://github.com/Iris0905/angular-onscreen-material-keyboard.git"
   },
-  "author": "David Enke <post@davidenke.de>",
+  "author": "iris0905",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ngx-material-keyboard/core/issues"
+    "url": "https://github.com/Iris0905/angular-onscreen-material-keyboard/issues"
   },
-  "homepage": "https://github.com/ngx-material-keyboard/core",
+  "homepage": "https://github.com/Iris0905/angular-onscreen-material-keyboard",
   "publishConfig": {
     "access": "public"
   },
