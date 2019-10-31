@@ -26,7 +26,7 @@ npm-debug.log
 # IDE Directories #
 .idea
 !.idea/codeStyleSettings.xml
-!.idea/ngx-material-keyboard.iml
+!.idea/angular-onscreen-material-keyboard.iml
 
 # External tool builders #
 .externalToolBuilders/
