@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/ngx-material-keyboard/core.svg?branch=master)](https://travis-ci.org/ngx-material-keyboard/core)
 
-# ngx-material-keyboard
+# angular-material-keyboard
 Onscreen virtual keyboard for [Angular] using [Angular Material].
-> Please note that the project is at a very early stage. Therefore one should refrain from productive usage.
+> Note that this is a fork of https://github.com/joskwanten/core, which appears to no longer be maintained
 
 ![ngx-material-keyboard in action](https://cdn.rawgit.com/ngx-material-keyboard/core/develop/screenshots/ngxmk-2.gif)
 
