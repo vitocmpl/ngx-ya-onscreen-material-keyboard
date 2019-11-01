@@ -7,8 +7,6 @@ import { KeyboardClassKey } from '../../enums/keyboard-class-key.enum';
 import { IKeyboardDeadkeys } from '../../interfaces/keyboard-deadkeys.interface';
 import { IKeyboardIcons } from '../../interfaces/keyboard-icons.interface';
 
-
-
 export const VALUE_NEWLINE = '\n\r';
 export const VALUE_SPACE = ' ';
 export const VALUE_TAB = '\t';
@@ -143,7 +141,7 @@ export class MatKeyboardKeyComponent implements OnInit {
 
   // Inject dependencies
   constructor(@Inject(MAT_KEYBOARD_DEADKEYS) private _deadkeys: IKeyboardDeadkeys,
-    @Inject(MAT_KEYBOARD_ICONS) private _icons: IKeyboardIcons) { }
+              @Inject(MAT_KEYBOARD_ICONS) private _icons: IKeyboardIcons) { }
 
   ngOnInit() {
     // read the deadkeys
@@ -161,7 +159,7 @@ export class MatKeyboardKeyComponent implements OnInit {
     // Trigger generic click event
     this.genericClick.emit(event);
 
-    // Manipulate the focused input / textarea value    
+    // Manipulate the focused input / textarea value
     const caret = this.input ? this._getCursorPosition() : 0;
 
     let char: string;
@@ -223,13 +221,13 @@ export class MatKeyboardKeyComponent implements OnInit {
     // Dispatch Input Event for Angular to register a change
     if (this.input && this.input.nativeElement) {
       setTimeout(() => {
-        this.input.nativeElement.dispatchEvent(new Event('input',{ bubbles: true }));
+        this.input.nativeElement.dispatchEvent(new Event('input', { bubbles: true }));
       });
     }
   }
 
   private deleteSelectedText(): void {
-    const value = this.inputValue ? this.inputValue.toString() : "";
+    const value = this.inputValue ? this.inputValue.toString() : '';
     let caret = this.input ? this._getCursorPosition() : 0;
     let selectionLength = this._getSelectionLength();
     if (selectionLength === 0) {
@@ -249,7 +247,7 @@ export class MatKeyboardKeyComponent implements OnInit {
   }
 
   private replaceSelectedText(char: string): void {
-    const value = this.inputValue ? this.inputValue.toString() : "";
+    const value = this.inputValue ? this.inputValue.toString() : '';
     const caret = this.input ? this._getCursorPosition() : 0;
     const selectionLength = this._getSelectionLength();
     const headPart = value.slice(0, caret);
@@ -291,7 +289,7 @@ export class MatKeyboardKeyComponent implements OnInit {
     } else if ('selection' in window.document) {
       // IE
       this.input.nativeElement.focus();
-      let selection: any = window.document['selection'];
+      const selection: any = window.document['selection'];
       const sel = selection.createRange();
       const selLen = selection.createRange().text.length;
       sel.moveStart('character', -this.control.value.length);
@@ -313,7 +311,7 @@ export class MatKeyboardKeyComponent implements OnInit {
     if ('selection' in window.document) {
       // IE
       this.input.nativeElement.focus();
-      let selection: any = window.document['selection'];
+      const selection: any = window.document['selection'];
       return selection.createRange().text.length;
     }
   }

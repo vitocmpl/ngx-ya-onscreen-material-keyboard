@@ -8,8 +8,6 @@ import { IKeyboardLayout } from '../../interfaces/keyboard-layout.interface';
 import { MatKeyboardService } from '../../services/keyboard.service';
 import { MatKeyboardKeyComponent } from '../keyboard-key/keyboard-key.component';
 
-
-
 /**
  * A component used to open as the default keyboard, matching material spec.
  * This should only be used internally by the keyboard service.
@@ -84,7 +82,7 @@ export class MatKeyboardComponent implements OnInit {
 
   // inject dependencies
   constructor(@Inject(LOCALE_ID) private _locale: string,
-    private _keyboardService: MatKeyboardService) { }
+              private _keyboardService: MatKeyboardService) { }
 
   setInputInstance(inputInstance: ElementRef) {
     this._inputInstance$.next(inputInstance);
@@ -203,13 +201,14 @@ export class MatKeyboardComponent implements OnInit {
   /*
    * non-modifier keys are clicked
    */
-  onKeyClick()
-  {
-    if (this._modifier === KeyboardModifier.Shift || this._modifier === KeyboardModifier.ShiftAlt)
+  onKeyClick() {
+    if (this._modifier === KeyboardModifier.Shift || this._modifier === KeyboardModifier.ShiftAlt) {
       this._modifier = this._invertShiftModifier(this._modifier);
+    }
 
-    if(this._modifier === KeyboardModifier.Alt || this._modifier === KeyboardModifier.ShiftAlt)
+    if (this._modifier === KeyboardModifier.Alt || this._modifier === KeyboardModifier.ShiftAlt) {
       this._modifier = this._invertAltModifier(this._modifier);
+    }
   }
 
   /**
