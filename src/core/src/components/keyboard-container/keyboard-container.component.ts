@@ -8,8 +8,6 @@ import { MatKeyboardConfig } from '../../configs/keyboard.config';
 import { KeyboardAnimationState } from '../../enums/keyboard-animation-state.enum';
 import { KeyboardAnimationTransition } from '../../enums/keyboard-animation-transition.enum';
 
-
-
 // TODO: we can't use constants from animation.ts here because you can't use
 // a text interpolation in anything that is analyzed statically with ngc (for AoT compile).
 export const SHOW_ANIMATION = `${AnimationDurations.ENTERING} ${AnimationCurves.DECELERATION_CURVE}`;
@@ -66,7 +64,7 @@ export class MatKeyboardContainerComponent extends BasePortalOutlet implements O
   keyboardConfig: MatKeyboardConfig;
 
   constructor(private _ngZone: NgZone,
-    private _changeDetectorRef: ChangeDetectorRef) {
+              private _changeDetectorRef: ChangeDetectorRef) {
     super();
   }
 

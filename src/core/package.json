@@ -1,13 +1,13 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "angular-onscreen-material-keyboard",
-  "version": "0.1.3",
+  "version": "0.1.7",
   "description": "This package is forked from ngx-material-keyboard with bug fixes",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Iris0905/angular-onscreen-material-keyboard.git"
   },
-  "author": "iris0905",
+  "author": "Iris X, Daniel M",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Iris0905/angular-onscreen-material-keyboard/issues"
