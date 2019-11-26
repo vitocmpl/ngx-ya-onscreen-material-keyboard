@@ -1,7 +1,7 @@
 import { Component, ElementRef, Inject, LOCALE_ID, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, NgControl, NgForm, NgModel } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { IKeyboardLayout, MatKeyboardComponent, MatKeyboardRef, MatKeyboardService, MAT_KEYBOARD_LAYOUTS } from '@ngx-material-keyboard/core';
+import { IKeyboardLayout, MatKeyboardComponent, MatKeyboardRef, MatKeyboardService, MAT_KEYBOARD_LAYOUTS } from 'angular-onscreen-material-keyboard';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -17,10 +17,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private _submittedForms = new BehaviorSubject<{ control: string, value: string }[][]>([]);
 
-  @ViewChild('attachTo', { read: ElementRef })
+  @ViewChild('attachTo', { read: ElementRef, static: true })
   private _attachToElement: ElementRef;
 
-  @ViewChild('attachTo', { read: NgModel })
+  @ViewChild('attachTo', { read: NgModel, static: true })
   private _attachToControl: NgControl;
 
   get submittedForms(): Observable<{ control: string, value: string }[][]> {
