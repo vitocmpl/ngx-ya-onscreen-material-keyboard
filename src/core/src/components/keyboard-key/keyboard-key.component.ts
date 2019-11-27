@@ -2,10 +2,9 @@ import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, I
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { MAT_KEYBOARD_DEADKEYS } from '../../configs/keyboard-deadkey.config';
-import { MAT_KEYBOARD_ICONS } from '../../configs/keyboard-icons.config';
 import { KeyboardClassKey } from '../../enums/keyboard-class-key.enum';
 import { IKeyboardDeadkeys } from '../../interfaces/keyboard-deadkeys.interface';
-import { IKeyboardIcons } from '../../interfaces/keyboard-icons.interface';
+import { IKeyboardIcons, IMatIcon } from '../../interfaces/keyboard-icons.interface';
 
 export const VALUE_NEWLINE = '\n\r';
 export const VALUE_SPACE = ' ';
@@ -22,14 +21,15 @@ export class MatKeyboardKeyComponent implements OnInit {
 
   private _deadkeyKeys: string[] = [];
 
-  private _iconKeys: string[] = [];
-
   active$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   pressed$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   @Input()
   key: string | KeyboardClassKey;
+
+  @Input()
+  icon: IMatIcon;
 
   @Input()
   set active(active: boolean) {
@@ -99,11 +99,11 @@ export class MatKeyboardKeyComponent implements OnInit {
   }
 
   get hasIcon(): boolean {
-    return this._iconKeys.some((iconKey: string) => iconKey === `${this.key}`);
+    return this.icon !== undefined && this.icon !== null;
   }
 
-  get icon(): string {
-    return this._icons[this.key];
+  get iconName(): string {
+    return this.icon.name;
   }
 
   get cssClass(): string {
@@ -140,15 +140,11 @@ export class MatKeyboardKeyComponent implements OnInit {
   }
 
   // Inject dependencies
-  constructor(@Inject(MAT_KEYBOARD_DEADKEYS) private _deadkeys: IKeyboardDeadkeys,
-              @Inject(MAT_KEYBOARD_ICONS) private _icons: IKeyboardIcons) { }
+  constructor(@Inject(MAT_KEYBOARD_DEADKEYS) private _deadkeys: IKeyboardDeadkeys) { }
 
   ngOnInit() {
     // read the deadkeys
     this._deadkeyKeys = Object.keys(this._deadkeys);
-
-    // read the icons
-    this._iconKeys = Object.keys(this._icons);
   }
 
   onClick(event: MouseEvent) {
