@@ -2,8 +2,10 @@ import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBindi
 import { AbstractControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MatKeyboardRef } from '../../classes/keyboard-ref.class';
+import { KEYBOARD_ICONS } from '../../configs/keyboard-icons.config';
 import { KeyboardClassKey } from '../../enums/keyboard-class-key.enum';
 import { KeyboardModifier } from '../../enums/keyboard-modifier.enum';
+import { IKeyboardIcons, IMatIcon } from '../../interfaces/keyboard-icons.interface';
 import { IKeyboardLayout } from '../../interfaces/keyboard-layout.interface';
 import { MatKeyboardService } from '../../services/keyboard.service';
 import { MatKeyboardKeyComponent } from '../keyboard-key/keyboard-key.component';
@@ -34,6 +36,8 @@ export class MatKeyboardComponent implements OnInit {
 
   private _capsLocked = false;
 
+  private _icons: IKeyboardIcons = KEYBOARD_ICONS;
+
   // the service provides a locale or layout optionally
   locale?: string;
 
@@ -58,6 +62,10 @@ export class MatKeyboardComponent implements OnInit {
   // returns an observable of the input instance
   get inputInstance(): Observable<ElementRef | null> {
     return this._inputInstance$.asObservable();
+  }
+
+  set icons(icons: IKeyboardIcons) {
+    Object.assign(this._icons, icons);
   }
 
   set darkTheme(darkTheme: boolean) {
@@ -129,6 +137,11 @@ export class MatKeyboardComponent implements OnInit {
     }
 
     return key[modifier];
+  }
+
+  // retrieves icon for given key
+  getKeyIcon(key: (string | KeyboardClassKey)[]): IMatIcon {
+    return this._icons[key[KeyboardModifier.None]];
   }
 
   /**
