@@ -64,6 +64,10 @@ export class MatKeyboardComponent implements OnInit {
     return this._inputInstance$.asObservable();
   }
 
+  set icons(icons: IKeyboardIcons) {
+    Object.assign(this._icons, icons);
+  }
+
   set darkTheme(darkTheme: boolean) {
     if (this._darkTheme.getValue() !== darkTheme) {
       this._darkTheme.next(darkTheme);

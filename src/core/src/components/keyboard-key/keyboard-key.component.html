@@ -6,6 +6,6 @@
         [ngClass]="cssClass"
         (click)="onClick($event)"
 >
-  <mat-icon *ngIf="hasIcon">{{ iconName }}</mat-icon>
-  <ng-container *ngIf="!hasIcon">{{ key }}</ng-container>
+  <mat-icon *ngIf="hasIcon; else noIcon" [fontSet]="fontSet" [fontIcon]="fontIcon" [svgIcon]="svgIcon">{{ iconName }}</mat-icon>
+  <ng-template #noIcon>{{ key }}</ng-template>
 </button>

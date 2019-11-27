@@ -103,7 +103,19 @@ export class MatKeyboardKeyComponent implements OnInit {
   }
 
   get iconName(): string {
-    return this.icon.name;
+    return this.icon.name || '';
+  }
+
+  get fontSet(): string {
+    return this.icon.fontSet || '';
+  }
+
+  get fontIcon(): string {
+    return this.icon.fontIcon || '';
+  }
+
+  get svgIcon(): string {
+    return this.icon.svgIcon || '';
   }
 
   get cssClass(): string {

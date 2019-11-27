@@ -83,6 +83,10 @@ export class MatKeyboardService {
       keyboardRef.instance.locale = this._layouts[layoutOrLocale].lang && this._layouts[layoutOrLocale].lang.pop();
     }
 
+    if (config.customIcons) {
+      keyboardRef.instance.icons = config.customIcons;
+    }
+
     // When the keyboard is dismissed, lower the keyboard counter.
     keyboardRef
       .afterDismissed()
