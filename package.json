@@ -1,7 +1,7 @@
 {
   "name": "angular-onscreen-material-keyboard",
-  "version": "0.1.7",
-  "description": "This package is forked from ngx-material-keyboard with bug fixes.",
+  "version": "0.1.9",
+  "description": "This package is forked from ngx-material-keyboard with bug fixes and additional features.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/angular-onscreen-material-keyboard.git"
@@ -63,5 +63,11 @@
     "tsickle": "^0.37.0",
     "tslint": "5.12.0",
     "typescript": "3.5.3"
-  }
+  },
+  "keywords": [
+    "angular",
+    "material",
+    "keyboard",
+    "touchscreen"
+  ]
 }
