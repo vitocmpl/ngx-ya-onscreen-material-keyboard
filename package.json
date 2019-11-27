@@ -1,6 +1,6 @@
 {
   "name": "angular-onscreen-material-keyboard",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "This package is forked from ngx-material-keyboard with bug fixes and additional features.",
   "repository": {
     "type": "git",
