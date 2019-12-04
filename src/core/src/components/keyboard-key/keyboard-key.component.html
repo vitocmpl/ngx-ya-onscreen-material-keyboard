@@ -5,6 +5,9 @@
         [class.mat-keyboard-key-pressed]="pressed$ | async"
         [ngClass]="cssClass"
         (click)="onClick($event)"
+        (pointerdown)="onPointerDown()"
+        (pointerleave)="cancelRepeat()"
+        (pointerup)="cancelRepeat()"
 >
   <mat-icon *ngIf="hasIcon; else noIcon" [fontSet]="fontSet" [fontIcon]="fontIcon" [svgIcon]="svgIcon">{{ iconName }}</mat-icon>
   <ng-template #noIcon>{{ key }}</ng-template>

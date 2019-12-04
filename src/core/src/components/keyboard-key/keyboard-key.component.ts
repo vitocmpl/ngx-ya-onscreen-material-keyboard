@@ -4,11 +4,13 @@ import { BehaviorSubject } from 'rxjs';
 import { MAT_KEYBOARD_DEADKEYS } from '../../configs/keyboard-deadkey.config';
 import { KeyboardClassKey } from '../../enums/keyboard-class-key.enum';
 import { IKeyboardDeadkeys } from '../../interfaces/keyboard-deadkeys.interface';
-import { IKeyboardIcons, IMatIcon } from '../../interfaces/keyboard-icons.interface';
+import { IMatIcon } from '../../interfaces/keyboard-icons.interface';
 
 export const VALUE_NEWLINE = '\n\r';
 export const VALUE_SPACE = ' ';
 export const VALUE_TAB = '\t';
+const REPEAT_TIMEOUT = 500;
+const REPEAT_INTERVAL = 100;
 
 @Component({
   selector: 'mat-keyboard-key',
@@ -20,6 +22,9 @@ export const VALUE_TAB = '\t';
 export class MatKeyboardKeyComponent implements OnInit {
 
   private _deadkeyKeys: string[] = [];
+  private _repeatTimeoutHandler: any;
+  private _repeatIntervalHandler: any;
+  private _repeatState: boolean = false; // true if repeating, false if waiting
 
   active$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -160,12 +165,14 @@ export class MatKeyboardKeyComponent implements OnInit {
   }
 
   onClick(event: MouseEvent) {
-    // Trigger a global key event
-    // TODO: investigate
-    this._triggerKeyEvent();
-
     // Trigger generic click event
     this.genericClick.emit(event);
+
+    // Do not execute keypress if key is currently repeating
+    if (this._repeatState) { return; }
+
+    // Trigger a global key event. TODO: investigate
+    // this._triggerKeyEvent();
 
     // Manipulate the focused input / textarea value
     const caret = this.input ? this._getCursorPosition() : 0;
@@ -234,6 +241,78 @@ export class MatKeyboardKeyComponent implements OnInit {
     }
   }
 
+  // Handle repeating keys. Keypress logic derived from onClick()
+  onPointerDown() {
+    this._repeatState = false;
+    this._repeatTimeoutHandler = setTimeout(() => {
+      // Initialize keypress variables
+      let char: string;
+      let keyFn: () => void;
+
+      switch (this.key) {
+        // Ignore non-repeating keys
+        case KeyboardClassKey.Alt:
+        case KeyboardClassKey.AltGr:
+        case KeyboardClassKey.AltLk:
+        case KeyboardClassKey.Caps:
+        case KeyboardClassKey.Enter:
+        case KeyboardClassKey.Shift:
+          return;
+
+        case KeyboardClassKey.Bksp:
+          keyFn = () => {
+            this.deleteSelectedText();
+            this.bkspClick.emit();
+          };
+          break;
+
+        case KeyboardClassKey.Space:
+          char = VALUE_SPACE;
+          keyFn = () => this.spaceClick.emit();
+          break;
+
+        case KeyboardClassKey.Tab:
+          char = VALUE_TAB;
+          keyFn = () => this.tabClick.emit();
+          break;
+
+        default:
+          char = `${this.key}`;
+          keyFn = () => this.keyClick.emit();
+          break;
+      }
+
+      // Execute repeating keypress
+      this._repeatIntervalHandler = setInterval(() => {
+        const caret = this.input ? this._getCursorPosition() : 0;
+        this._repeatState = true;
+
+        if (keyFn) { keyFn(); }
+
+        if (char && this.input) {
+          this.replaceSelectedText(char);
+          this._setCursorPosition(caret + 1);
+        }
+
+        if (this.input && this.input.nativeElement) {
+          setTimeout(() => this.input.nativeElement.dispatchEvent(new Event('input', { bubbles: true })));
+        }
+      }, REPEAT_INTERVAL);
+    }, REPEAT_TIMEOUT);
+  }
+
+  cancelRepeat() {
+    if (this._repeatTimeoutHandler) {
+      clearTimeout(this._repeatTimeoutHandler);
+      this._repeatTimeoutHandler = null;
+    }
+
+    if (this._repeatIntervalHandler) {
+      clearInterval(this._repeatIntervalHandler);
+      this._repeatIntervalHandler = null;
+    }
+  }
+
   private deleteSelectedText(): void {
     const value = this.inputValue ? this.inputValue.toString() : '';
     let caret = this.input ? this._getCursorPosition() : 0;
@@ -264,25 +343,26 @@ export class MatKeyboardKeyComponent implements OnInit {
     this.inputValue = [headPart, char, endPart].join('');
   }
 
-  private _triggerKeyEvent(): Event {
-    const keyboardEvent = new KeyboardEvent('keydown');
-    //
-    // keyboardEvent[initMethod](
-    //   true, // bubbles
-    //   true, // cancelable
-    //   window, // viewArg: should be window
-    //   false, // ctrlKeyArg
-    //   false, // altKeyArg
-    //   false, // shiftKeyArg
-    //   false, // metaKeyArg
-    //   this.charCode, // keyCodeArg : unsigned long - the virtual key code, else 0
-    //   0 // charCodeArgs : unsigned long - the Unicode character associated with the depressed key, else 0
-    // );
-    //
-    // window.document.dispatchEvent(keyboardEvent);
+  // TODO: Include for repeating keys as well (if this gets implemented)
+  // private _triggerKeyEvent(): Event {
+  //   const keyboardEvent = new KeyboardEvent('keydown');
+  //   //
+  //   // keyboardEvent[initMethod](
+  //   //   true, // bubbles
+  //   //   true, // cancelable
+  //   //   window, // viewArg: should be window
+  //   //   false, // ctrlKeyArg
+  //   //   false, // altKeyArg
+  //   //   false, // shiftKeyArg
+  //   //   false, // metaKeyArg
+  //   //   this.charCode, // keyCodeArg : unsigned long - the virtual key code, else 0
+  //   //   0 // charCodeArgs : unsigned long - the Unicode character associated with the depressed key, else 0
+  //   // );
+  //   //
+  //   // window.document.dispatchEvent(keyboardEvent);
 
-    return keyboardEvent;
-  }
+  //   return keyboardEvent;
+  // }
 
   // inspired by:
   // ref https://stackoverflow.com/a/2897510/1146207
