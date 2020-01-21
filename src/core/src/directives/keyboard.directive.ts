@@ -37,7 +37,7 @@ export class MatKeyboardDirective implements OnDestroy {
   }
 
   @HostListener('focus', ['$event'])
-  private _showKeyboard() {
+  public showKeyboard() {
     this._keyboardRef = this._keyboardService.open(this.matKeyboard, {
       darkTheme: this.darkTheme,
       duration: this.duration,
@@ -60,7 +60,7 @@ export class MatKeyboardDirective implements OnDestroy {
   }
 
   @HostListener('blur', ['$event'])
-  private _hideKeyboard() {
+  public hideKeyboard() {
     if (this._keyboardRef) {
       this._keyboardRef.dismiss();
     }
