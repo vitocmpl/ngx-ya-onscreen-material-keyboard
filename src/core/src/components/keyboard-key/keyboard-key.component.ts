@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { MAT_KEYBOARD_DEADKEYS } from '../../configs/keyboard-deadkey.config';
@@ -19,7 +19,7 @@ const REPEAT_INTERVAL = 100;
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
-export class MatKeyboardKeyComponent implements OnInit {
+export class MatKeyboardKeyComponent implements OnInit, OnDestroy {
 
   private _deadkeyKeys: string[] = [];
   private _repeatTimeoutHandler: any;
@@ -164,6 +164,10 @@ export class MatKeyboardKeyComponent implements OnInit {
     this._deadkeyKeys = Object.keys(this._deadkeys);
   }
 
+  ngOnDestroy() {
+    this.cancelRepeat();
+  }
+
   onClick(event: MouseEvent) {
     // Trigger generic click event
     this.genericClick.emit(event);
@@ -243,6 +247,7 @@ export class MatKeyboardKeyComponent implements OnInit {
 
   // Handle repeating keys. Keypress logic derived from onClick()
   onPointerDown() {
+    this.cancelRepeat();
     this._repeatState = false;
     this._repeatTimeoutHandler = setTimeout(() => {
       // Initialize keypress variables
