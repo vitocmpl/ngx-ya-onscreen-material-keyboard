@@ -33,7 +33,7 @@ export class MatKeyboardDirective implements OnDestroy {
               @Optional() @Self() private _control?: NgControl) {}
 
   ngOnDestroy() {
-    this._hideKeyboard();
+    this.hideKeyboard();
   }
 
   @HostListener('focus', ['$event'])
