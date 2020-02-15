@@ -3,8 +3,6 @@ import { Observable, Subject } from 'rxjs';
 import { MatKeyboardContainerComponent } from '../components/keyboard-container/keyboard-container.component';
 import { MatKeyboardComponent } from '../components/keyboard/keyboard.component';
 
-
-
 /**
  * Reference to a keyboard dispatched from the keyboard service.
  */
