@@ -24,7 +24,7 @@
         "./src/core/src/public_api.ts"
       ]
     },
-    "module": "esnext"
+    "module": "es2020"
   },
   "angularCompilerOptions": {
     "paths": {
