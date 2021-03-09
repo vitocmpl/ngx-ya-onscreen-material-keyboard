@@ -41,7 +41,7 @@
     "@angular/material": "^11.2.3",
     "@angular/platform-browser": "^11.2.4",
     "@angular/platform-browser-dynamic": "^11.2.4",
-    "@ngtools/webpack": "^9.1.15",
+    "@ngtools/webpack": "^11.2.3",
     "@schematics/angular": "^9.1.15",
     "@schematics/update": "^0.900.7",
     "classlist.js": "1.1.20150312",
@@ -79,7 +79,7 @@
   },
   "keywords": [
     "angular",
-    "angular8",
+    "angular11",
     "material",
     "keyboard",
     "onscreen",
