@@ -31,7 +31,8 @@
       "angular-onscreen-material-keyboard": [
         "./src/core/src/public_api.ts"
       ]
-    }
+    },
+    "strictTemplates": false
   },
   "exclude": [
     ".ng_build"

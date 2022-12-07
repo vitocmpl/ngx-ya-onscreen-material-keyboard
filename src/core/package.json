@@ -1,5 +1,4 @@
 {
-  "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "ngx-ya-onscreen-material-keyboard",
   "version": "0.14.0",
   "description": "This package is forked from Iris0905/angular-onscreen-material-keyboard with angular version update.",
@@ -7,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/vitocmpl/ngx-ya-onscreen-material-keyboard.git"
   },
-  "author": "Vito C, Iris X, Daniel M, Kenneth A",
+  "author": "Iris X, Daniel M, Kenneth A",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vitocmpl/ngx-ya-onscreen-material-keyboard/issues"
@@ -24,12 +23,6 @@
     "@angular/forms": "^13.0.0 || ^14.0.0 || ^15.0.0",
     "@angular/material": "^13.0.0 || ^14.0.0 || ^15.0.0",
     "rxjs": "^6.6.6"
-  },
-  "ngPackage": {
-    "dest": "../../dist/core",
-    "lib": {
-      "entryFile": "src/public_api.ts"
-    }
   },
   "keywords": [
     "angular",
