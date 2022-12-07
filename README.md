@@ -1,8 +1,8 @@
-# ngx-ya-onscreen-material-keyboard
+# angular-onscreen-material-keyboard
 Onscreen virtual keyboard for [Angular] using [Angular Material].
-> Note that this is a fork of Iris0905/angular-onscreen-material-keyboard
+> Note that this is a fork of https://github.com/joskwanten/core
 
-![ngx-ya-onscreen-material-keyboard](https://cdn.rawgit.com/ngx-material-keyboard/core/develop/screenshots/ngxmk-2.gif)
+![ngx-material-keyboard in action](https://cdn.rawgit.com/ngx-material-keyboard/core/develop/screenshots/ngxmk-2.gif)
 
 ## Demo
 A demo can be found [here][demo].
@@ -12,7 +12,7 @@ Generated documentation can be found [here][docs].
 
 ## Getting started
 1. Install with your prefered packet manager (we're using `npm` here):
-`npm install --save ngx-ya-onscreen-material-keyboard`
+`npm install --save angular-onscreen-material-keyboard`
 > Be sure to fulfill the peer dependencies of this module, in particular [Angular] and [Angular Material].
 
 2. Add the module to your project, e.g. `app.module.ts`:
