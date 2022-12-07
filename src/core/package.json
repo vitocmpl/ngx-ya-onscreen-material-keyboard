@@ -1,18 +1,18 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
-  "name": "angular-onscreen-material-keyboard",
-  "version": "0.6.0",
-  "description": "This package is forked from ngx-material-keyboard with bug fixes and additional features",
+  "name": "ngx-ya-onscreen-material-keyboard",
+  "version": "0.14.0",
+  "description": "This package is forked from Iris0905/angular-onscreen-material-keyboard with angular version update.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Iris0905/angular-onscreen-material-keyboard.git"
+    "url": "git+https://github.com/vitocmpl/ngx-ya-onscreen-material-keyboard.git"
   },
-  "author": "Iris X, Daniel M, Kenneth A",
+  "author": "Vito C, Iris X, Daniel M, Kenneth A",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Iris0905/angular-onscreen-material-keyboard/issues"
+    "url": "https://github.com/vitocmpl/ngx-ya-onscreen-material-keyboard/issues"
   },
-  "homepage": "https://github.com/Iris0905/angular-onscreen-material-keyboard",
+  "homepage": "https://github.com/vitocmpl/ngx-ya-onscreen-material-keyboard",
   "publishConfig": {
     "access": "public"
   },
@@ -33,10 +33,7 @@
   },
   "keywords": [
     "angular",
-    "angular11",
-    "ng11",
-    "angular12",
-    "ng12",
+    "angular14",
     "material",
     "keyboard",
     "onscreen",
