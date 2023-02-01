@@ -43,7 +43,6 @@
     "karma-jasmine-html-reporter": "^1.5.4",
     "karma-webpack": "^5.0.0",
     "reset-css": "^5.0.1",
-    "rxjs": "^6.6.6",
     "tslib": "^2.0.0",
     "webpack": "^5.75.0",
     "zone.js": "~0.11.4"
